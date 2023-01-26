@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>สุ่มอาหาร</title>
+  <meta name="viewport" content=""width=device-width, initial-scale="1.0">
+
+  <style>
+    .center1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px ;
+    border:red; 
+  }
+  
+  .button3 {
+    background-color: #FFFFFF; /* white */
+    border: none;
+    color: rgb(87, 69, 248);
+    padding: 20px 1px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 80px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 30px;
+    justify-content: center;
+  }
+
+  .button2 {
+			background-color: #FFFFFF;
+			/* white */
+			border: none;
+			color: white;
+			padding: 20px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 120px;
+			margin: 4px 2px;
+			cursor: pointer;
+      border-radius: 45px;
+  }
+
+   *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    background-color: #F5E2CC;
+}
+.wrapper{
+    width: 605px;
+    background: #F5E2CC;
+    border-radius: 15px;
+    padding: 20px 30px 25px;
+}
+.wrapper header{
+    font-size: 40px;
+    font-weight: 500;
+    text-align: center;
+    margin: 50px 100px;
+}
+.wrapper .content{
+    margin: 50px 0;
+}
+.content .name-area{
+    display: flex;
+    justify-content: center;
+}
+.name-area .name{
+    font-size: 35px;
+    text-align: center;
+    word-break: break-all;
+}
+.picture-area .picture{
+    align-items: center;
+}
+.food-area .food{
+    display: flex;
+    font-size: 35px;
+    margin-top: 10px;
+    justify-content: flex-end;
+}
+.buttons .features{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    justify-content: space-between;
+    list-style: none;
+}
+.features button{
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 35px;
+    padding: 20px 30px;
+    border-radius: 30px;
+    list-style: none;
+    
+}
+  .button3 {border-radius: 20%;}
+
+  </style>
+</head>
+<body>
+   <div class="wrapper">
+    <div class="center1">
+      <a href="MainPage.html" class="button2" style="color:#FF9C95;">Thongmala</a>
+        </div class="center1">
+    <header>เลือกราคาที่ต้องการเพื่อรับการสุ่ม</header>
+    <button class="button3" id="button1">15฿</button>
+    <p id="output1" style="font-size:70px; color:rgb(0, 71, 0); text-align: center;"></p>
+    <img id="output3" width="500">
+    <p id="output2" style="font-size: 50px; color: #FF9C95; text-align: center;"></p>
+  
+    <script>
+      const list1 = [
+      { name: 'ร้านน้ำไอศครีมและของทอด', description: 'ชาหอม', picture: 'https://chillchilljapan.com/wp-content/uploads/2021/08/pixta_66559184_M-760x570.jpg' },
+      { name: 'ร้านน้ำไอศครีมและของทอด', description: 'ชาเขียว', picture: 'https://drive.google.com/uc?export=view&id=1Wid-Xw_jcBg0IyHEh0FRidGlRsY4Nyme' },
+      { name: 'ร้านน้ำไอศครีมและของทอด', description: 'ชาเย็น', picture: 'https://drive.google.com/uc?export=view&id=1Wid-Xw_jcBg0IyHEh0FRidGlRsY4Nyme' },
+      { name: 'ร้านน้ำไอศครีมและของทอด', description: 'ไวท์มอลท์', picture: 'https://drive.google.com/uc?export=view&id=1MOCNTuj0KTMYJ9hGWLUpzgT1Qsg1bk7T' },
+      { name: 'ร้านน้ำไอศครีมและของทอด', description: 'กาแฟ', picture: 'https://drive.google.com/uc?export=view&id=1diMZnVoRPdlynueE-5g8qubmAtTjrkkS' },
+      { name: 'ร้านน้ำไอศครีมและของทอด', description: 'น้ำแดง', picture: 'https://drive.google.com/uc?export=view&id=1Kx8KOIBnUruyMYnvVtpJDvCl7tIrcW_2' },
+      { name: 'ร้านน้ำไอศครีมและของทอด', description: 'น้ำเขียว', picture: 'https://drive.google.com/uc?export=view&id=10C3mtB4WJ4Cma0aLmtOx2-mWOqwBpkTw' },
+      { name: 'ร้านน้ำไอศครีมและของทอด', description: 'น้ำมะนาว', picture: 'https://drive.google.com/uc?export=view&id=1r-JMeMegQBwY9kCUSefALPf6VihITdwC' },
+      { name: 'ร้านน้ำไอศครีมและของทอด', description: 'ไมโล', picture: 'https://drive.google.com/uc?export=view&id=1diMZnVoRPdlynueE-5g8qubmAtTjrkkS' },
+      { name: 'ร้านน้ำไอศครีมและของทอด', description: 'น้ำเงาะ', picture: 'https://drive.google.com/uc?export=view&id=1YSAbbDrsNhEDSMHuuh33hO-O1D2MvDfr' },
+      { name: 'ร้านน้ำไอศครีมและของทอด', description: 'น้ำลิ้นจี่', picture: 'https://drive.google.com/uc?export=view&id=1YSAbbDrsNhEDSMHuuh33hO-O1D2MvDfr' },
+      { name: 'ร้านน้ำไอศครีมและของทอด', description: 'บลูเบอรี่', picture: 'https://drive.google.com/uc?export=view&id=1VxbJDNHBk8x-xINwa1C4wHHSsPQ--Fph' },
+      { name: 'ร้านน้ำไอศครีมและของทอด', description: 'โกโก้', picture: 'https://drive.google.com/uc?export=view&id=1diMZnVoRPdlynueE-5g8qubmAtTjrkkS' },
+      { name: 'ร้านน้ำป้าแหวน', description: 'ชาหอม', picture: 'https://drive.google.com/uc?export=view&id=1Wid-Xw_jcBg0IyHEh0FRidGlRsY4Nyme' },
+      { name: 'ร้านน้ำป้าแหวน', description: 'ชาเขียวญี่ปุ่น', picture: 'https://drive.google.com/uc?export=view&id=10C3mtB4WJ4Cma0aLmtOx2-mWOqwBpkTw' },
+      { name: 'ร้านน้ำป้าแหวน', description: 'ชานมเย็น', picture: 'https://drive.google.com/uc?export=view&id=1_nD7J39NXiWFk6t4cH6KSGeSJVNgL2tp' },
+      { name: 'ร้านน้ำป้าแหวน', description: 'ชาไต้หวัน', picture: 'https://drive.google.com/uc?export=view&id=1Wid-Xw_jcBg0IyHEh0FRidGlRsY4Nyme' },
+      { name: 'ร้านน้ำป้าแหวน', description: 'กาแฟเย็น', picture: 'https://drive.google.com/uc?export=view&id=1diMZnVoRPdlynueE-5g8qubmAtTjrkkS' },
+      { name: 'ร้านน้ำป้าแหวน', description: 'อัญชันมะนาว', picture: 'https://drive.google.com/uc?export=view&id=18sG695fJ974BUpfjWQ8qNrfUYH3zigaZ' },
+      { name: 'ร้านน้ำป้าแหวน', description: 'นมข้าวโพด', picture: 'https://drive.google.com/uc?export=view&id=1uHti_Nu_dXynmFl7kzVsbIIeiFXq2n-T' },
+      { name: 'ร้านน้ำป้าแหวน', description: 'นมกล้วยหอม', picture: 'https://drive.google.com/uc?export=view&id=1uHti_Nu_dXynmFl7kzVsbIIeiFXq2n-T' },
+      { name: 'ร้านน้ำป้าแหวน', description: 'นมชมพู', picture: 'https://drive.google.com/uc?export=view&id=1_nD7J39NXiWFk6t4cH6KSGeSJVNgL2tp' },
+      { name: 'ร้านน้ำป้าแหวน', description: 'ไมโล', picture: 'https://drive.google.com/uc?export=view&id=1diMZnVoRPdlynueE-5g8qubmAtTjrkkS' },
+      { name: 'ร้านน้ำป้าแหวน', description: 'ชามะนาว', picture: 'https://drive.google.com/uc?export=view&id=1Z1LcsZ7q2HGIezCxy-EwIRRjH9dbq5Or' },
+      { name: 'ร้านน้ำป้าแหวน', description: 'น้ำผึ้งมะนาว', picture: 'https://drive.google.com/uc?export=view&id=1r-JMeMegQBwY9kCUSefALPf6VihITdwC' },
+      { name: 'ร้านน้ำป้าแหวน', description: 'น้ำเก็กฮวย', picture: 'https://dn.lnwfile.com/_/dn/_raw/gh/6d/yc.jpg' },
+      { name: 'ร้านน้ำป้าแหวน', description: 'โกโก้', picture: 'https://drive.google.com/uc?export=view&id=1diMZnVoRPdlynueE-5g8qubmAtTjrkkS' },
+      { name: 'ร้านน้ำป้าแหวน', description: 'ไวท์มอล์ท', picture: 'https://drive.google.com/uc?export=view&id=1MOCNTuj0KTMYJ9hGWLUpzgT1Qsg1bk7T' },
+      { name: 'ร้านป้าน้ำตาล', description: 'ชาไทย', picture: 'https://drive.google.com/uc?export=view&id=1Wid-Xw_jcBg0IyHEh0FRidGlRsY4Nyme' },
+      { name: 'ร้านป้าน้ำตาล', description: 'ช็อคมอลท์', picture: 'https://drive.google.com/uc?export=view&id=1MOCNTuj0KTMYJ9hGWLUpzgT1Qsg1bk7T' },
+      { name: 'ร้านป้าน้ำตาล', description: 'กาแฟ', picture: 'https://drive.google.com/uc?export=view&id=1diMZnVoRPdlynueE-5g8qubmAtTjrkkS' },
+      { name: 'ร้านป้าน้ำตาล', description: 'นมสด', picture: 'https://drive.google.com/uc?export=view&id=1uHti_Nu_dXynmFl7kzVsbIIeiFXq2n-T' },
+      { name: 'ร้านป้าน้ำตาล', description: 'นมชมพู', picture: 'https://drive.google.com/uc?export=view&id=1_nD7J39NXiWFk6t4cH6KSGeSJVNgL2tp' },
+      { name: 'ร้านป้าน้ำตาล', description: 'บลูเลม่อน', picture: 'https://drive.google.com/uc?export=view&id=1ASTVH-cFwKTmNMbfcyXynyyHtdCF8Vpx' },
+      { name: 'ร้านป้าน้ำตาล', description: 'พีชมะนาว', picture: 'https://drive.google.com/uc?export=view&id=11o2hYuh0LVMo5XC76WSCV26eIZv5hvyU' },
+      { name: 'ร้านป้าน้ำตาล', description: 'ชามะนาว', picture: 'https://drive.google.com/uc?export=view&id=1Z1LcsZ7q2HGIezCxy-EwIRRjH9dbq5Or' },
+      { name: 'ร้านป้าน้ำตาล', description: 'น้ำผึ้งมะนาว', picture: 'https://drive.google.com/uc?export=view&id=1r-JMeMegQBwY9kCUSefALPf6VihITdwC' },
+      { name: 'ร้านป้าน้ำตาล', description: 'แดงมะนาว', picture: 'https://drive.google.com/uc?export=view&id=1lvmuh8V_Rf3SqbBcjALSWEoAvIwRBZec' },
+      { name: 'ร้านป้าน้ำตาล', description: 'องุ่น', picture: 'https://drive.google.com/uc?export=view&id=18sG695fJ974BUpfjWQ8qNrfUYH3zigaZ' },
+      { name: 'ร้านป้าน้ำตาล', description: 'ลิ้นจี่', picture: 'https://drive.google.com/uc?export=view&id=1YSAbbDrsNhEDSMHuuh33hO-O1D2MvDfr' },
+      { name: 'ร้านป้าน้ำตาล', description: 'แอปเปิ้ล', picture: 'https://drive.google.com/uc?export=view&id=10C3mtB4WJ4Cma0aLmtOx2-mWOqwBpkTw' },
+      { name: 'ร้านป้าน้ำตาล', description: 'สตอเบอรี่', picture: 'https://drive.google.com/uc?export=view&id=1lvmuh8V_Rf3SqbBcjALSWEoAvIwRBZec' },
+      { name: 'ร้านป้าน้ำตาล', description: 'บลูเบอรี่', picture: 'https://drive.google.com/uc?export=view&id=1VxbJDNHBk8x-xINwa1C4wHHSsPQ--Fph' },
+      { name: 'ร้านป้าน้ำตาล', description: 'พันช์', picture: 'https://drive.google.com/uc?export=view&id=132KYTBp8FJ6V0GC_FJBLlowvc9-yfxiE' },
+      { name: 'ร้านป้าน้ำตาล', description: 'ส้มส้ม', picture: 'https://drive.google.com/uc?export=view&id=1Wi2DkUrkqSCpPr5M6z6pB_Bgi6gRainf' },
+      { name: 'ร้านป้าน้ำตาล', description: 'เยลลี่อิตาเลียนโซดา', picture: 'https://img.kapook.com/u/wanwanat/italian%20soda.jpg' },
+
+      ];
+     
+  
+      function getRandomItem(list) {
+        const randomIndex = Math.floor(Math.random() * list.length);
+        return list[randomIndex];
+      }
+  
+      const button1 = document.getElementById('button1');
+      const output1 = document.getElementById('output1');
+  
+      button1.addEventListener('click', function() {
+        const randomItem = getRandomItem(list1);
+        output1.textContent = randomItem.name;
+        output2.textContent = randomItem.description;
+        output3.src = randomItem.picture;
+      });
+
+    </script>
+  </body>
+  
+</html>

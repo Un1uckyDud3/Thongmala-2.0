@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>สุ่มอาหาร</title>
+  <meta name="viewport" content=""width=device-width, initial-scale="1.0">
+
+  <style>
+    .center1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px ;
+    border:red; 
+  }
+  
+  .button3 {
+    background-color: #FFFFFF; /* white */
+    border: none;
+    color: rgb(87, 69, 248);
+    padding: 20px 1px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 80px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 45%;
+    border-radius: 30px;
+    justify-content: center;
+  }
+
+  .button2 {
+			background-color: #FFFFFF;
+			/* white */
+			border: none;
+			color: white;
+			padding: 20px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 120px;
+			margin: 4px 2px;
+			cursor: pointer;
+      border-radius: 45px;
+  }
+
+   *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    background-color: #F5E2CC;
+}
+.wrapper{
+    width: 605px;
+    background: #F5E2CC;
+    border-radius: 15px;
+    padding: 20px 30px 25px;
+}
+.wrapper header{
+    font-size: 40px;
+    font-weight: 500;
+    text-align: center;
+    margin: 50px 100px;
+}
+.wrapper .content{
+    margin: 50px 0;
+}
+.content .name-area{
+    display: flex;
+    justify-content: center;
+}
+.name-area .name{
+    font-size: 35px;
+    text-align: center;
+    word-break: break-all;
+}
+.picture-area .picture{
+    align-items: center;
+}
+.food-area .food{
+    display: flex;
+    font-size: 35px;
+    margin-top: 10px;
+    justify-content: flex-end;
+}
+.buttons .features{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    justify-content: space-between;
+    list-style: none;
+}
+.features button{
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 35px;
+    padding: 20px 30px;
+    border-radius: 30px;
+    list-style: none;
+    
+}
+  .button3 {border-radius: 20%;}
+
+  </style>
+</head>
+<body>
+   <div class="wrapper">
+    <div class="center1">
+      <a href="MainPage.html" class="button2" style="color:#FF9C95;">Thongmala</a>
+        </div class="center1">
+    <header>เลือกราคาที่ต้องการเพื่อรับการสุ่ม</header>
+    <button class="button3" id="button2">15฿</button>
+    <button class="button3" id="button3">35฿</button>
+    <p id="output1" style="font-size:70px; color:rgb(0, 71, 0); text-align: center;"></p>
+    <img id="output3" width="500">
+    <p id="output2" style="font-size: 50px; color: #FF9C95; text-align: center;"></p>
+  
+    <script>
+      const list2 = [
+        { name: 'ร้านน้ำไอศครีมและของทอด', description: 'ไอศครีมทอด (ช็อกโกแลต/ช็อคชิพ/คุกกี้/มะนาว/สตอเบอรี่/วนิลา)', picture: 'https://www.farmhouse.co.th/file_managers/sandwich/%E0%B9%84%E0%B8%AD%E0%B8%A8%E0%B8%81%E0%B8%A3%E0%B8%B5%E0%B8%A1%E0%B8%97%E0%B8%AD%E0%B8%94.jpg' },
+
+      ];
+      const list3 = [
+        { name: 'ร้านน้ำไอศครีมและของทอด', description: 'เครป (2 อย่าง 30 บาท เพิ่มอย่างละ 5 บาท)', picture: 'https://s359.kapook.com/pagebuilder/d4f5f878-595b-42d0-b8da-c0cb42f214ef.jpg'},
+    
+      ];
+  
+      function getRandomItem(list) {
+        const randomIndex = Math.floor(Math.random() * list.length);
+        return list[randomIndex];
+      }
+  
+      const button2 = document.getElementById('button2');
+      const button3 = document.getElementById('button3');
+      const output2 = document.getElementById('output2');
+      const output3 = document.getElementById('output3');
+  
+      button2.addEventListener('click', function() {
+        const randomItem = getRandomItem(list2);
+        output1.textContent = randomItem.name;
+        output2.textContent = randomItem.description;
+        output3.src = randomItem.picture;
+      });
+  
+      button3.addEventListener('click', function() {
+        const randomItem = getRandomItem(list3);
+        output1.textContent = randomItem.name;
+        output2.textContent = randomItem.description;
+        output3.src = randomItem.picture;
+      });
+    </script>
+  </body>
+  
+</html>

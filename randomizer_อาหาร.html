@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>สุ่มอาหาร</title>
+  <meta name="viewport" content=""width=device-width, initial-scale="1.0">
+
+  <style>
+    .center1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px ;
+    border:red; 
+  }
+  
+  .button3 {
+    background-color: #FFFFFF; /* white */
+    border: none;
+    color: rgb(87, 69, 248);
+    padding: 20px 1px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 80px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 45%;
+    border-radius: 30px;
+    justify-content: center;
+  }
+
+  .button2 {
+			background-color: #FFFFFF;
+			/* white */
+			border: none;
+			color: white;
+			padding: 20px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 120px;
+			margin: 4px 2px;
+			cursor: pointer;
+      border-radius: 45px;
+  }
+
+   *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    background-color: #F5E2CC;
+}
+.wrapper{
+    width: 605px;
+    background: #F5E2CC;
+    border-radius: 15px;
+    padding: 20px 30px 25px;
+}
+.wrapper header{
+    font-size: 40px;
+    font-weight: 500;
+    text-align: center;
+    margin: 50px 100px;
+}
+.wrapper .content{
+    margin: 50px 0;
+}
+.content .name-area{
+    display: flex;
+    justify-content: center;
+}
+.name-area .name{
+    font-size: 35px;
+    text-align: center;
+    word-break: break-all;
+}
+.picture-area .picture{
+    align-items: center;
+}
+.food-area .food{
+    display: flex;
+    font-size: 35px;
+    margin-top: 10px;
+    justify-content: flex-end;
+}
+.buttons .features{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    justify-content: space-between;
+    list-style: none;
+}
+.features button{
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 35px;
+    padding: 20px 30px;
+    border-radius: 30px;
+    list-style: none;
+    
+}
+  .button3 {border-radius: 20%;}
+
+  </style>
+</head>
+<body>
+   <div class="wrapper">
+    <div class="center1">
+      <a href="MainPage.html" class="button2" style="color:#FF9C95;">Thongmala</a>
+        </div class="center1">
+    <header>เลือกราคาที่ต้องการเพื่อรับการสุ่ม</header>
+    <button class="button3" id="button2">35฿</button>
+    <button class="button3" id="button3">40฿</button>
+    <p id="output1" style="font-size:70px; color:rgb(0, 71, 0); text-align: center;"></p>
+    <img id="output3" width="500">
+    <p id="output2" style="font-size: 50px; color: #FF9C95; text-align: center;"></p>
+  
+    <script>
+      const list2 = [
+        { name: 'ร้านพิษณุโลก', description: 'ไก่บอนชอน', picture: 'https://i.ytimg.com/vi/EMSIhAVcjaQ/maxresdefault.jpg' },
+        { name: 'ร้านพิษณุโลก', description: 'ก๋วยเตี๋ยวนํ้าใสธรรมดา', picture: 'https://drive.google.com/uc?export=view&id=1iyU_DwuPmmqQ4IagtUDJyMHJXvO3_dWk' },
+        { name: 'ร้านพิษณุโลก', description: 'คั่วกลิ้ง' ,picture: 'https://krua.co/wp-content/uploads/2019/11/ImageBannerMobile_960x633_New_-01.jpg' },
+        { name: 'ร้านพิษณุโลก', description: 'แกงกะหรี่' ,picture: 'https://bk-review.com/wp-content/uploads/2020/05/%E0%B8%A7%E0%B8%B4%E0%B8%98%E0%B8%B5%E0%B8%97%E0%B8%B3-%E0%B9%81%E0%B8%81%E0%B8%87%E0%B8%81%E0%B8%B0%E0%B8%AB%E0%B8%A3%E0%B8%B5%E0%B9%88%E0%B8%AB%E0%B8%A1%E0%B8%B9%E0%B8%97%E0%B8%AD%E0%B8%94-%E0%B8%97%E0%B8%B3%E0%B8%87%E0%B9%88%E0%B8%B2%E0%B8%A2%E0%B9%81%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%A3%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B9%80%E0%B8%AB%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%99%E0%B9%84%E0%B8%9B%E0%B8%81%E0%B8%B4%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%99-34-of-42.jpg' },
+        { name: 'ร้านพิษณุโลก', description: 'ผัดผัก' ,picture: 'https://img-global.cpcdn.com/recipes/6a8dbdef830624aa/1200x630cq70/photo.jpg' },
+        { name: 'ร้านสุดหล่อ', description: 'ก๋วยเตี๋ยวนํ้าใสธรรมดา', picture: 'https://drive.google.com/uc?export=view&id=1iyU_DwuPmmqQ4IagtUDJyMHJXvO3_dWk' },
+        { name: 'ร้านสุดหล่อ', description: 'ก๋วยเตี๋ยวต้มยำ', picture: 'https://s359.kapook.com/pagebuilder/4866b153-e5dc-4b98-a9f7-64ac92d4d1ad.jpg'},
+        { name: 'ร้านสุดหล่อ', description: 'บะหมี่เกี๊ยว', picture: 'https://img-global.cpcdn.com/recipes/3d32aea0894e28ca/1200x630cq70/photo.jpg' },
+        { name: 'ร้านสุดหล่อ', description: 'เย็นตาโฟ', picture: 'http://food.mthai.com/app/uploads/2015/05/10390363_604556829675113_5458183944058722391_n.jpg' },
+        { name: 'ร้านสุดหล่อ', description: 'ก๋วยเตี๋ยวน้ำตก', picture: 'https://i0.wp.com/goodlifeupdate.com/app/uploads/2021/04/image-130-edited.png'},
+        { name: 'ร้านสุดหล่อ', description: 'ก๋วยเตี๋ยวไก่ตุ๋น', picture: 'https://www.naibann.com/wp-content/uploads/2019/12/stewed-chicken-noodle-recipe-cover.jpg' },
+        { name: 'ร้านสุดหล่อ', description: 'ก๋วยเตี๋ยวหมูตุ๋น', picture: 'https://img.wongnai.com/p/1920x0/2019/10/19/81ce947523df46eebd8b9c1f87fc06e3.jpg' },
+        { name: 'ร้านแป๊ะปูหมูกรอบ', description: 'ผัดไท', picture: 'https://drive.google.com/uc?export=view&id=1ZTFvvIjdLCWqXe8rSqo7fmh09Vtj_hFd'},
+        { name: 'ร้านแป๊ะปูหมูกรอบ', description: 'โจ๊ก', picture: 'https://drive.google.com/uc?export=view&id=1_N8oq2kQOTRn8PSzOWAeMPOjCywsV0nM'},
+        { name: 'ร้านแป๊ะปูหมูกรอบ', description: 'ข้าวต้มทรงเครื่อง', picture: 'https://drive.google.com/uc?export=view&id=1_N8oq2kQOTRn8PSzOWAeMPOjCywsV0nM'},
+        { name: 'ร้านปลื้มใจ', description: 'สปาเก็ตตี้คาโบนาร่า', picture: 'https://drive.google.com/uc?export=view&id=13hdRKBtbHUsf6Bmtp9bwohUpJJOoHHj4'},
+        { name: 'ร้านปลื้มใจ', description: 'มักกะโรนีผัดซอส', picture: 'https://drive.google.com/uc?export=view&id=17zlAX-d1ypRbJuHdCqmn1Tz3YSMS-kr9'},
+        { name: 'ร้านปลื้มใจ', description: 'ซุปมักกะโรนี', picture: 'https://drive.google.com/uc?export=view&id=1S082-1vcwK-MgpPuLdrPDUo3X3CJ7Naf'},
+        { name: 'ร้านปลื้มใจ', description: 'ผัดมาม่า', picture: 'https://drive.google.com/uc?export=view&id=1zNdma_iKG860vM7GdDOw6gUeLwlHOQ7m'},
+        { name: 'ร้านปลื้มใจ', description: 'มาม่าต้มยำหมูสับ', picture: 'https://drive.google.com/uc?export=view&id=1WwLj8JODNI7lm5OBEhN-J-f6FB9GC9xv'},
+        { name: 'ร้านzeedยำ', description: 'ยำ', picture: 'https://s359.kapook.com/pagebuilder/dd8fa42d-01a2-48c1-b146-a0770bf7d499.jpg'},
+      ];
+      const list3 = [
+        { name: 'ร้านแป๊ะปูหมูกรอบ', description: 'ข้าวหมูแดง', picture: 'https://drive.google.com/uc?export=view&id=1BYB7jziv8RgF2T4Kb5TNmW8Cvx8_ofUg'},
+        { name: 'ร้านแป๊ะปูหมูกรอบ', description: 'ข้าวหมูกรอบ', picture: 'https://img.wongnai.com/p/1920x0/2021/03/16/55b02d173acf42b2a68e8c5f4eb40112.jpg'},
+        { name: 'ร้านแป๊ะปูหมูกรอบ', description: 'ก๋วยจับน้ำข้น', picture: 'https://www.kruamoomoo.com/wp-content/uploads/2011/09/kuay_jabb_or_rice_flake_noodles-048.jpg.webp'},
+        { name: 'ร้านแป๊ะปูหมูกรอบ', description: 'ก๋วยจับน้ำใส', picture: 'https://obs.line-scdn.net/0hjm0TP0q1NUINLRw_i21KFTd7Ni0-QSZBaRtkQVFDa3Z3HSIdYkt8LC4va3JwG3IcYxl_LCwtLnNyGXVHMkp8/w644'},
+        { name: 'ร้านแป๊ะปูหมูกรอบ', description: 'ต้มเลือดหมู', picture: 'https://img.wongnai.com/p/1920x0/2020/06/14/1f001bac440c460bb1cc7a812556c207.jpg'},
+        { name: 'ร้านแป๊ะปูหมูกรอบ', description: 'กระเพาะปลา', picture: 'https://www.nestleprofessional.co.th/sites/default/files/styles/np_recipe_detail/public/2022-04/fish-maw-540x400.png?itok=091ffS3s'},
+        { name: 'ร้านสุดยอดข้าวผัด', description: 'ข้าวผัดหมู (เพิ่มไข่ดาว 8บาท)', picture: 'https://images.aws.nestle.recipes/resized/10f33893492769337355e77962aa1b95_fried-rice_944_531.jpeg'},
+        { name: 'ร้านสุดยอดข้าวผัด', description: 'ข้าวผัดไก่ (เพิ่มไข่ดาว 8บาท)', picture: 'https://img.wongnai.com/p/1920x0/2019/03/24/f7fa87e9479f46ad86be3f773f079fb9.jpg'},
+        { name: 'ร้านสุดยอดข้าวผัด', description: 'ข้าวผัดแฮม (เพิ่มไข่ดาว 8บาท)', picture: 'https://i.ytimg.com/vi/VZiIQxoHhVY/maxresdefault.jpg'},
+        { name: 'ร้านสุดยอดข้าวผัด', description: 'ข้าวผัดไส้กรอก (เพิ่มไข่ดาว 8บาท)', picture: 'https://food.mthai.com/app/uploads/2018/07/Fried-Rice-with-Sausage-and-Eggs-1-e1531471774346.jpg'},
+        { name: 'ร้านสุดยอดข้าวผัด', description: 'ข้าวผัดกุ้ง (เพิ่มไข่ดาว 8บาท)', picture: 'https://img.wongnai.com/p/1920x0/2018/02/14/021350fce478468b98c775abd057a3c0.jpg'},
+        { name: 'ร้านสุดยอดข้าวผัด', description: 'ข้าวผัดปู (เพิ่มไข่ดาว 8บาท)', picture: 'https://img-global.cpcdn.com/recipes/8d36694f728a8620/1200x630cq70/photo.jpg'},        
+      ];
+  
+      function getRandomItem(list) {
+        const randomIndex = Math.floor(Math.random() * list.length);
+        return list[randomIndex];
+      }
+  
+      const button2 = document.getElementById('button2');
+      const button3 = document.getElementById('button3');
+      const output2 = document.getElementById('output2');
+      const output3 = document.getElementById('output3');
+  
+      button2.addEventListener('click', function() {
+        const randomItem = getRandomItem(list2);
+        output1.textContent = randomItem.name;
+        output2.textContent = randomItem.description;
+        output3.src = randomItem.picture;
+      });
+  
+      button3.addEventListener('click', function() {
+        const randomItem = getRandomItem(list3);
+        output1.textContent = randomItem.name;
+        output2.textContent = randomItem.description;
+        output3.src = randomItem.picture;
+      });
+    </script>
+  </body>
+  
+</html>
